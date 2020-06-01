@@ -13,6 +13,10 @@ public class World {
 		this.map = new ArrayList<>();
 	}
 	
+	public World() {
+		this.map = new ArrayList<>();
+	}
+	
 	public List<WorldTile> getMap() {
 		return map;
 	}
