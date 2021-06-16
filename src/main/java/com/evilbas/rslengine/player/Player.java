@@ -3,20 +3,33 @@ package com.evilbas.rslengine.player;
 import java.util.List;
 
 public class Player {
-    private Long playerId;
+    private Integer playerId;
+    private Long playerDiscId;
+
     private String currentCharacter;
     private List<Character> characters;
 
-    public Player(Long playerId) {
-        this.playerId = playerId;
+    public Player(Long playerDiscId) {
+        this.playerDiscId = playerDiscId;
     }
 
-    public Long getPlayerId() {
+    public Player() {
+    }
+
+    public Integer getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(Long playerId) {
+    public void setPlayerId(Integer playerId) {
         this.playerId = playerId;
+    }
+
+    public Long getPlayerDiscId() {
+        return playerDiscId;
+    }
+
+    public void setPlayerDiscId(Long playerDiscId) {
+        this.playerDiscId = playerDiscId;
     }
 
     public String getCurrentCharacter() {
