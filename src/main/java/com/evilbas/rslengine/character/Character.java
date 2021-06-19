@@ -7,6 +7,15 @@ public class Character {
     private String characterName;
     private Integer characterLevel;
     private Long characterExp;
+    private Integer ownerId;
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
 
     public String getCharacterGuid() {
         return characterGuid;
