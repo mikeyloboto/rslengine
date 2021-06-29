@@ -27,4 +27,11 @@ public class Encounter {
         return baseExp;
 
     }
+
+    public Creature getCreatureSlot(Integer slot) {
+        if (slot < 0 || slot > creatures.size()) {
+            return creatures.get(0);
+        }
+        return creatures.get(slot);
+    }
 }
