@@ -7,6 +7,7 @@ import com.evilbas.rslengine.creature.Encounter;
 
 public class Character extends Creature {
     private String characterGuid;
+    private String characterName;
     private Integer characterLevel;
     private Long characterExp;
     private Integer ownerId;
@@ -29,11 +30,11 @@ public class Character extends Creature {
     }
 
     public String getCharacterName() {
-        return this.getName();
+        return this.characterName;
     }
 
     public void setCharacterName(String characterName) {
-        this.setName(characterName);
+        this.characterName = characterName;
     }
 
     public Integer getCharacterLevel() {
