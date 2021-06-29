@@ -54,7 +54,7 @@ public class Character extends Creature {
     }
 
     public Character(String characterName) {
-        this.setName(characterName);
+        this.characterName = characterName;
         this.characterGuid = UUID.randomUUID().toString();
         this.characterExp = 0L;
         this.characterLevel = 1;
