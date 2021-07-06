@@ -20,13 +20,17 @@ public class Encounter {
         this.creatures = creatures;
     }
 
+    public Encounter() {
+
+    }
+
     public Long getEncounterExp(Character character) {
         Long baseExp = 0L;
         for (Creature c : creatures) {
             baseExp += CombatUtil.getMonsterExpDrop(c.getLevel());
         }
 
-        Integer levelDiff = character.getLevel() - creatures.get(0).getLevel();
+        Integer levelDiff = character.getCharacterLevel() - creatures.get(0).getLevel();
         if (levelDiff > 3) {
             baseExp = (long) (baseExp * 0.667);
         } else if (levelDiff < -3) {
