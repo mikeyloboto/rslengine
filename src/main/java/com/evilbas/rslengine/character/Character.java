@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import com.evilbas.rslengine.creature.Creature;
 import com.evilbas.rslengine.creature.Encounter;
+import com.evilbas.rslengine.networking.CombatResultWrapper;
+import com.evilbas.rslengine.util.CombatUtil;
 
 public class Character extends Creature {
     private String characterGuid;
@@ -66,6 +68,17 @@ public class Character extends Creature {
 
     public void setCurrentEncounter(Encounter currentEncounter) {
         this.currentEncounter = currentEncounter;
+    }
+
+    public void addExperience(Long exp) {
+        this.characterExp += exp;
+        while (true) {
+            if (this.characterExp >= CombatUtil.getExpCap(this.characterLevel)) {
+                this.characterExp -= CombatUtil.getExpCap(this.characterLevel);
+                this.characterLevel += 1;
+            } else
+                break;
+        }
     }
 
 }
