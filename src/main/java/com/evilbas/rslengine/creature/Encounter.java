@@ -8,6 +8,14 @@ import com.evilbas.rslengine.character.Character;
 public class Encounter {
     private List<Creature> creatures;
 
+    public List<Creature> getCreatures() {
+        return creatures;
+    }
+
+    public void setCreatures(List<Creature> creatures) {
+        this.creatures = creatures;
+    }
+
     public Encounter(List<Creature> creatures) {
         this.creatures = creatures;
     }
