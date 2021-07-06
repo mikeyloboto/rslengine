@@ -20,8 +20,8 @@ public class Inventory {
 
     public void addItem(Item item) {
         boolean found = false;
-        for (ItemStack i : items) {
-            if (i.getItem().equals(item)) {
+        for (ItemStack i : this.items) {
+            if (i.getItem().getName().equals(item.getName())) {
                 i.setAmount(i.getAmount() + 1);
                 found = true;
                 break;
