@@ -101,6 +101,9 @@ public class Character extends Creature {
     private void levelUp() {
         this.characterExp -= CombatUtil.getExpCap(this.characterLevel);
         this.characterLevel += 1;
+        if (skillPoints == null) {
+            skillPoints = 0;
+        }
         this.skillPoints += 1;
         recalculateHp();
     }
