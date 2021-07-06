@@ -18,6 +18,8 @@ public class Character extends Creature {
     private Inventory inventory;
 
     public Inventory getInventory() {
+        if (this.inventory == null)
+            inventory = new Inventory();
         return inventory;
     }
 
