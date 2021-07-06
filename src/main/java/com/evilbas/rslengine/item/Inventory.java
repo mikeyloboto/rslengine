@@ -19,11 +19,19 @@ public class Inventory {
     }
 
     public void addItem(Item item) {
+        boolean found = false;
         for (ItemStack i : items) {
             if (i.getItem().equals(item)) {
                 i.setAmount(i.getAmount() + 1);
+                found = true;
                 break;
             }
+        }
+        if (!found) {
+            ItemStack stack = new ItemStack();
+            stack.setAmount(1);
+            stack.setItem(item);
+            items.add(stack);
         }
     }
 
