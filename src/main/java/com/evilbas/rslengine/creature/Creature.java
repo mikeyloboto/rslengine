@@ -38,4 +38,19 @@ public class Creature {
         this.level = level;
     }
 
+    public void heal(Long hp) {
+        currentHp += hp;
+        if (currentHp > maxHp)
+            currentHp = maxHp;
+    }
+
+    public Boolean damage(Long hp) {
+        currentHp -= hp;
+        if (currentHp <= 0) {
+            currentHp = 0L;
+            return true;
+        }
+        return false;
+    }
+
 }

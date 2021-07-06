@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import com.evilbas.rslengine.creature.Creature;
 import com.evilbas.rslengine.creature.Encounter;
-import com.evilbas.rslengine.networking.CombatResultWrapper;
+import com.evilbas.rslengine.item.Inventory;
 import com.evilbas.rslengine.util.CombatUtil;
 
 public class Character extends Creature {
@@ -14,6 +14,16 @@ public class Character extends Creature {
     private Long characterExp;
     private Integer ownerId;
     private Encounter currentEncounter;
+    private Integer skillPoints;
+    private Inventory inventory;
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
 
     public Integer getOwnerId() {
         return ownerId;
@@ -70,15 +80,45 @@ public class Character extends Creature {
         this.currentEncounter = currentEncounter;
     }
 
+    public Integer getSkillPoints() {
+        return skillPoints;
+    }
+
+    public void setSkillPoints(Integer skillPoints) {
+        this.skillPoints = skillPoints;
+    }
+
     public void addExperience(Long exp) {
         this.characterExp += exp;
         while (true) {
             if (this.characterExp >= CombatUtil.getExpCap(this.characterLevel)) {
-                this.characterExp -= CombatUtil.getExpCap(this.characterLevel);
-                this.characterLevel += 1;
+                levelUp();
             } else
                 break;
         }
+    }
+
+    private void levelUp() {
+        this.characterExp -= CombatUtil.getExpCap(this.characterLevel);
+        this.characterLevel += 1;
+        this.skillPoints += 1;
+        recalculateHp();
+    }
+
+    private void recalculateHp() {
+        this.setMaxHp(10L + (5 * characterLevel));
+        this.setCurrentHp(this.getMaxHp());
+    }
+
+    public Creature getViableTarget() {
+        if (this.currentEncounter == null)
+            return null;
+        for (Creature c : currentEncounter.getCreatures()) {
+            if (c.getCurrentHp() > 0) {
+                return c;
+            }
+        }
+        return null;
     }
 
 }
