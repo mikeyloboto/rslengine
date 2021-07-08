@@ -2,7 +2,7 @@ package com.evilbas.rslengine.networking;
 
 import com.evilbas.rslengine.item.Inventory;
 
-public class InventoryInteractionWrapper {
+public class InventoryInteractionWrapper extends ResultWrapper {
     private Inventory inventory;
 
     public Inventory getInventory() {
