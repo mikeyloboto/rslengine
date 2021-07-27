@@ -1,14 +1,24 @@
 package com.evilbas.rslengine.networking;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ResultWrapper {
 
-    private String message;
+    private List<String> messages;
 
-    public String getMessage() {
-        return message;
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public List<String> getMessages() {
+        return messages;
+    }
+
+    public void addMessage(String message) {
+        if (this.messages == null) {
+            messages = new ArrayList<>();
+        }
+        this.messages.add(message);
     }
 }
