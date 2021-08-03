@@ -9,6 +9,7 @@ public class Creature {
     private Long maxHp;
     private Long currentHp;
     private Integer level;
+    private Integer difficultyFactor;
 
     public String getName() {
         return name;
@@ -40,6 +41,14 @@ public class Creature {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public Integer getDifficultyFactor() {
+        return difficultyFactor;
+    }
+
+    public void setDifficultyFactor(Integer difficultyFactor) {
+        this.difficultyFactor = difficultyFactor;
     }
 
     public void heal(Long hp) {
