@@ -5,6 +5,8 @@ import java.util.UUID;
 import com.evilbas.rslengine.creature.Creature;
 import com.evilbas.rslengine.creature.Encounter;
 import com.evilbas.rslengine.item.Inventory;
+import com.evilbas.rslengine.item.ItemArmor;
+import com.evilbas.rslengine.item.ItemWeapon;
 import com.evilbas.rslengine.util.CombatUtil;
 
 public class Character extends Creature {
@@ -16,6 +18,9 @@ public class Character extends Creature {
     private Encounter currentEncounter;
     private Integer skillPoints;
     private Inventory inventory;
+
+    private ItemWeapon equippedWeapon;
+    private ItemArmor equippedArmor;
 
     public Inventory getInventory() {
         if (this.inventory == null)
@@ -90,6 +95,22 @@ public class Character extends Creature {
         this.skillPoints = skillPoints;
     }
 
+    public ItemWeapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(ItemWeapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
+
+    public ItemArmor getEquippedArmor() {
+        return equippedArmor;
+    }
+
+    public void setEquippedArmor(ItemArmor equippedArmor) {
+        this.equippedArmor = equippedArmor;
+    }
+
     public void addExperience(Long exp) {
         this.characterExp += exp;
         while (true) {
@@ -124,6 +145,28 @@ public class Character extends Creature {
             }
         }
         return null;
+    }
+
+    public void equipWeapon(Integer slot) {
+        if (this.getInventory().getItems().get(slot).getItem() instanceof ItemWeapon) {
+            if (this.equippedWeapon != null) {
+                this.getInventory().addItem(this.equippedWeapon);
+                this.equippedWeapon = null;
+            }
+            this.equippedWeapon = (ItemWeapon) this.getInventory().getItems().get(slot).getItem();
+            this.getInventory().getItems().remove((int) slot);
+        }
+    }
+
+    public void equipArmor(Integer slot) {
+        if (this.getInventory().getItems().get(slot).getItem() instanceof ItemArmor) {
+            if (this.equippedArmor != null) {
+                this.getInventory().addItem(this.equippedArmor);
+                this.equippedArmor = null;
+            }
+            this.equippedArmor = (ItemArmor) this.getInventory().getItems().get(slot).getItem();
+            this.getInventory().getItems().remove((int) slot);
+        }
     }
 
 }
