@@ -1,6 +1,7 @@
 package com.evilbas.rslengine.util;
 
 import com.evilbas.rslengine.ability.SpellType;
+import com.evilbas.rslengine.creature.Creature;
 import com.evilbas.rslengine.damage.DamageModifier;
 import com.evilbas.rslengine.item.ItemArmor;
 import com.evilbas.rslengine.item.ItemWeapon;
@@ -51,5 +52,9 @@ public class CombatUtil {
         armor.setRarity(ItemRarity.COMMON);
         armor.setBaseArmor(10L);
         return armor;
+    }
+
+    public static Long calculateDamage(Creature creature) {
+        return (long) Math.floor((creature.getDifficultyFactor() / 3d) * Math.sqrt((double) creature.getLevel()) * 2);
     }
 }
