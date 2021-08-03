@@ -22,6 +22,9 @@ public class Character extends Creature {
     private ItemWeapon equippedWeapon;
     private ItemArmor equippedArmor;
 
+    private Long mp;
+    private Long maxMp;
+
     public Inventory getInventory() {
         if (this.inventory == null)
             inventory = new Inventory();
@@ -111,6 +114,22 @@ public class Character extends Creature {
         this.equippedArmor = equippedArmor;
     }
 
+    public Long getMp() {
+        return mp;
+    }
+
+    public void setMp(Long mp) {
+        this.mp = mp;
+    }
+
+    public Long getMaxMp() {
+        return maxMp;
+    }
+
+    public void setMaxMp(Long maxMp) {
+        this.maxMp = maxMp;
+    }
+
     public void addExperience(Long exp) {
         this.characterExp += exp;
         while (true) {
@@ -129,11 +148,17 @@ public class Character extends Creature {
         }
         this.skillPoints += 1;
         recalculateHp();
+        recalculateMp();
     }
 
     private void recalculateHp() {
         this.setMaxHp(10L + (5 * characterLevel));
         this.setCurrentHp(this.getMaxHp());
+    }
+
+    private void recalculateMp() {
+        this.setMaxMp((10L + (5 * characterLevel)) * 2);
+        this.setMp(this.getMaxMp());
     }
 
     public Creature getViableTarget() {
