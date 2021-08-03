@@ -8,6 +8,23 @@ public class DamageModifier {
     private Boolean temporary;
     private Integer temporaryRemaining;
 
+    public DamageModifier(SpellType damageType, Long amount) {
+        this.damageType = damageType;
+        this.amount = amount;
+        this.temporary = false;
+    }
+
+    public DamageModifier() {
+
+    }
+
+    public DamageModifier(SpellType damageType, Long amount, Integer temporaryRemaining) {
+        this.damageType = damageType;
+        this.amount = amount;
+        this.temporary = true;
+        this.temporaryRemaining = temporaryRemaining;
+    }
+
     public SpellType getDamageType() {
         return damageType;
     }
