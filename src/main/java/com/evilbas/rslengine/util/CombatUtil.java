@@ -2,6 +2,9 @@ package com.evilbas.rslengine.util;
 
 import com.evilbas.rslengine.ability.SpellType;
 import com.evilbas.rslengine.damage.DamageModifier;
+import com.evilbas.rslengine.item.ItemArmor;
+import com.evilbas.rslengine.item.ItemWeapon;
+import com.evilbas.rslengine.item.property.ItemRarity;
 
 public class CombatUtil {
 
@@ -30,5 +33,23 @@ public class CombatUtil {
         mod.setDamageType(SpellType.PHYSICAL);
         mod.setAmount(amount);
         return mod;
+    }
+
+    public static ItemWeapon generateStartingWeapon() {
+        ItemWeapon weapon = new ItemWeapon();
+        weapon.setName("Broken Dagger");
+        weapon.setStackable(false);
+        weapon.setRarity(ItemRarity.COMMON);
+        weapon.setBaseDamage(10L);
+        return weapon;
+    }
+
+    public static ItemArmor generateStartingArmor() {
+        ItemArmor armor = new ItemArmor();
+        armor.setName("Fithy Rags");
+        armor.setStackable(false);
+        armor.setRarity(ItemRarity.COMMON);
+        armor.setBaseArmor(10L);
+        return armor;
     }
 }
