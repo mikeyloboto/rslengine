@@ -80,6 +80,8 @@ public class Character extends Creature {
         this.characterGuid = UUID.randomUUID().toString();
         this.characterExp = 0L;
         this.characterLevel = 1;
+        this.recalculateHp();
+        this.recalculateMp();
     }
 
     public Encounter getCurrentEncounter() {
