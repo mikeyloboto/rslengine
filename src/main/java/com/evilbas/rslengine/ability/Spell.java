@@ -85,6 +85,48 @@ public class Spell extends Ability {
         this.modifiers.add(modifier);
     }
 
+    public String getDescription() {
+        StringBuilder sb = new StringBuilder();
+        switch (this.effect) {
+            case HEAL:
+                sb.append("Heals ");
+                switch (this.target) {
+                    case SELF:
+                        sb.append("you.");
+                        break;
+                    case ENEMY:
+                        sb.append("first enemy.");
+                        break;
+                    case MULTI_ENEMY:
+                        sb.append("all enemies.");
+                        break;
+                }
+                break;
+            case HARM:
+                sb.append("Damages ");
+
+                switch (this.target) {
+                    case SELF:
+                        sb.append("you ");
+                        break;
+                    case ENEMY:
+                        sb.append("first enemy ");
+                        break;
+                    case MULTI_ENEMY:
+                        sb.append("all enemies ");
+                        break;
+                }
+                sb.append("for:");
+                for (DamageModifier dm : modifiers) {
+                    sb.append("\n   " + dm.getAmount() + " " + dm.getDamageType().getReadableName(false) + " damage");
+                }
+                break;
+        }
+
+        return sb.toString();
+
+    }
+
     public static Spell generateDamageSpell() {
         var spell = new Spell();
         spell.setSpellName("Fire Bolt");
