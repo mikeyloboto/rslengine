@@ -162,7 +162,7 @@ public class Spell extends Ability {
 
     public static Spell generateHealingSpell() {
         var spell = new Spell();
-        spell.setSpellName("Blizzard");
+        spell.setSpellName("Healing Touch");
         spell.setEffect(Effect.HEAL);
         spell.setTarget(Target.SELF);
         spell.setIcon("🌿");
