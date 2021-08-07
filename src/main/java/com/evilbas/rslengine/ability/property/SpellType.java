@@ -1,8 +1,9 @@
-package com.evilbas.rslengine.ability;
+package com.evilbas.rslengine.ability.property;
 
 public enum SpellType {
 
-    FIRE("fire"), NATURE("nature"), WATER("water"), PHYSICAL("physical"), CHAOS("chaos"), SHADOW("shadow");
+    FIRE("fire"), NATURE("nature"), WATER("water"), PHYSICAL("physical"), CHAOS("chaos"), SHADOW("shadow"),
+    LIGHTNING("lightning"), RADIANT("radiant"), PSYCHIC("psychic"), FROST("frost");
 
     private String readableName;
 

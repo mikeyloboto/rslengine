@@ -2,6 +2,7 @@ package com.evilbas.rslengine.character;
 
 import java.util.UUID;
 
+import com.evilbas.rslengine.ability.Spellbook;
 import com.evilbas.rslengine.creature.Creature;
 import com.evilbas.rslengine.creature.Encounter;
 import com.evilbas.rslengine.item.Inventory;
@@ -18,6 +19,7 @@ public class Character extends Creature {
     private Encounter currentEncounter;
     private Integer skillPoints;
     private Inventory inventory;
+    private Spellbook spellbook;
 
     private ItemWeapon equippedWeapon;
     private ItemArmor equippedArmor;
@@ -75,9 +77,19 @@ public class Character extends Creature {
         this.characterExp = characterExp;
     }
 
+    public Spellbook getSpellbook() {
+        return spellbook;
+    }
+
+    public void setSpellbook(Spellbook spellbook) {
+        this.spellbook = spellbook;
+    }
+
     public Character(String characterName) {
         this.characterName = characterName;
         this.characterGuid = UUID.randomUUID().toString();
+        this.inventory = new Inventory();
+        this.spellbook = new Spellbook();
         this.characterExp = 0L;
         this.characterLevel = 1;
         this.recalculateHp();

@@ -1,6 +1,6 @@
 package com.evilbas.rslengine.damage;
 
-import com.evilbas.rslengine.ability.SpellType;
+import com.evilbas.rslengine.ability.property.SpellType;
 
 public class DamageModifier {
     private SpellType damageType;

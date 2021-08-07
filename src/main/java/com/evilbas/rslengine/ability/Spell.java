@@ -1,24 +1,73 @@
 package com.evilbas.rslengine.ability;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.evilbas.rslengine.ability.property.Effect;
+import com.evilbas.rslengine.ability.property.SpellType;
+import com.evilbas.rslengine.ability.property.Target;
+import com.evilbas.rslengine.damage.DamageModifier;
+
 public class Spell extends Ability {
-    private SpellType type;
-    private Integer spellLevel;
     private String spellName;
+    private String icon;
 
-    public SpellType getType() {
-        return type;
+    private Effect effect;
+    private Target target;
+
+    private Long manaCost;
+
+    public Long getManaCost() {
+        return manaCost;
     }
 
-    public void setType(SpellType type) {
-        this.type = type;
+    public void setManaCost(Long manaCost) {
+        this.manaCost = manaCost;
     }
 
-    public Integer getSpellLevel() {
-        return spellLevel;
+    private List<DamageModifier> modifiers;
+
+    public Spell(String spellName, Effect effect, Target target, Long manaCost, String icon) {
+        this.spellName = spellName;
+        this.effect = effect;
+        this.target = target;
+        this.icon = icon;
+        this.manaCost = manaCost;
     }
 
-    public void setSpellLevel(Integer spellLevel) {
-        this.spellLevel = spellLevel;
+    public Spell() {
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public Effect getEffect() {
+        return effect;
+    }
+
+    public void setEffect(Effect effect) {
+        this.effect = effect;
+    }
+
+    public Target getTarget() {
+        return target;
+    }
+
+    public void setTarget(Target target) {
+        this.target = target;
+    }
+
+    public List<DamageModifier> getModifiers() {
+        return modifiers;
+    }
+
+    public void setModifiers(List<DamageModifier> modifiers) {
+        this.modifiers = modifiers;
     }
 
     public String getSpellName() {
@@ -27,5 +76,56 @@ public class Spell extends Ability {
 
     public void setSpellName(String spellName) {
         this.spellName = spellName;
+    }
+
+    public void addModifier(DamageModifier modifier) {
+        if (this.modifiers == null) {
+            this.modifiers = new ArrayList<>();
+        }
+        this.modifiers.add(modifier);
+    }
+
+    public static Spell generateDamageSpell() {
+        var spell = new Spell();
+        spell.setSpellName("Fire Bolt");
+        spell.setEffect(Effect.HARM);
+        spell.setTarget(Target.ENEMY);
+        spell.setIcon("🔥");
+        spell.addModifier(new DamageModifier(SpellType.FIRE, 20L));
+        spell.setManaCost(5L);
+        return spell;
+    }
+
+    public static Spell generateBigDamageSpell() {
+        var spell = new Spell();
+        spell.setSpellName("Chaos Bolt");
+        spell.setEffect(Effect.HARM);
+        spell.setTarget(Target.ENEMY);
+        spell.setIcon("✨");
+        spell.addModifier(new DamageModifier(SpellType.CHAOS, 50L));
+        spell.setManaCost(10L);
+        return spell;
+    }
+
+    public static Spell generateAoeSpell() {
+        var spell = new Spell();
+        spell.setSpellName("Blizzard");
+        spell.setEffect(Effect.HARM);
+        spell.setTarget(Target.MULTI_ENEMY);
+        spell.setIcon("❄️");
+        spell.addModifier(new DamageModifier(SpellType.FROST, 20L));
+        spell.setManaCost(10L);
+        return spell;
+    }
+
+    public static Spell generateHealingSpell() {
+        var spell = new Spell();
+        spell.setSpellName("Blizzard");
+        spell.setEffect(Effect.HEAL);
+        spell.setTarget(Target.SELF);
+        spell.setIcon("🌿");
+        spell.addModifier(new DamageModifier(SpellType.NATURE, 50L));
+        spell.setManaCost(5L);
+        return spell;
     }
 }

@@ -1,6 +1,6 @@
 package com.evilbas.rslengine.util;
 
-import com.evilbas.rslengine.ability.SpellType;
+import com.evilbas.rslengine.ability.property.SpellType;
 import com.evilbas.rslengine.creature.Creature;
 import com.evilbas.rslengine.damage.DamageModifier;
 import com.evilbas.rslengine.item.ItemArmor;

@@ -87,4 +87,16 @@ public class Creature {
         return false;
     }
 
+    public Boolean heal(List<DamageModifier> modifiers) {
+        for (DamageModifier mod : modifiers) {
+            currentHp += mod.getAmount();
+        }
+
+        if (currentHp > maxHp) {
+            currentHp = maxHp;
+            return true;
+        }
+        return false;
+    }
+
 }
