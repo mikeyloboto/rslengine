@@ -3,19 +3,14 @@ package com.evilbas.rslengine.item;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Data;
+
+@Data
 public class Inventory {
     private List<ItemStack> items;
 
     public Inventory() {
         this.items = new ArrayList<>();
-    }
-
-    public List<ItemStack> getItems() {
-        return items;
-    }
-
-    public void setItems(List<ItemStack> items) {
-        this.items = items;
     }
 
     public void addItem(Item item) {

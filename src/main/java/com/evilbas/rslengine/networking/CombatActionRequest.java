@@ -1,31 +1,11 @@
 package com.evilbas.rslengine.networking;
 
+import lombok.Data;
+
+@Data
 public class CombatActionRequest {
-    private String guild;
+    private String guid;
     private String spell;
     private Integer targetSlot;
 
-    public String getGuild() {
-        return guild;
-    }
-
-    public void setGuild(String guild) {
-        this.guild = guild;
-    }
-
-    public String getSpell() {
-        return spell;
-    }
-
-    public void setSpell(String spell) {
-        this.spell = spell;
-    }
-
-    public Integer getTargetSlot() {
-        return targetSlot;
-    }
-
-    public void setTargetSlot(Integer targetSlot) {
-        this.targetSlot = targetSlot;
-    }
 }

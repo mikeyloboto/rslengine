@@ -1,28 +1,20 @@
 package com.evilbas.rslengine.creature;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.evilbas.rslengine.util.CombatUtil;
+
+import lombok.Data;
+import lombok.NonNull;
+
 import com.evilbas.rslengine.character.Character;
 
+@Data
 public class Encounter {
+    @NonNull
     private List<Creature> creatures;
-
-    public List<Creature> getCreatures() {
-        return creatures;
-    }
-
-    public void setCreatures(List<Creature> creatures) {
-        this.creatures = creatures;
-    }
-
-    public Encounter(List<Creature> creatures) {
-        this.creatures = creatures;
-    }
-
-    public Encounter() {
-
-    }
 
     public Long getEncounterExp(Character character) {
         Long baseExp = 0L;
@@ -46,4 +38,21 @@ public class Encounter {
         }
         return creatures.get(slot);
     }
+
+    public static Encounter generateMockEncounter() {
+
+        List<Creature> creatures = new ArrayList<>();
+
+        Integer cNum = new Random().nextInt(3) + 1;
+        for (int i = 0; i < cNum; i++) {
+            Creature creature = new Creature();
+            creature.setMaxHp(20L);
+            creature.setCurrentHp(20L);
+            creature.setName("Kobold");
+            creature.setLevel(2);
+            creatures.add(creature);
+        }
+        return new Encounter(creatures);
+    }
+
 }

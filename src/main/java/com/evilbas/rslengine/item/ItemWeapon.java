@@ -5,34 +5,13 @@ import java.util.List;
 
 import com.evilbas.rslengine.damage.DamageModifier;
 
+import lombok.Data;
+
+@Data
 public class ItemWeapon extends Item {
     private Long baseDamage;
     private List<DamageModifier> modifiers;
     private List<DamageModifier> tempModifiers;
-
-    public Long getBaseDamage() {
-        return baseDamage;
-    }
-
-    public void setBaseDamage(Long baseDamage) {
-        this.baseDamage = baseDamage;
-    }
-
-    public List<DamageModifier> getModifiers() {
-        return modifiers;
-    }
-
-    public void setModifiers(List<DamageModifier> modifiers) {
-        this.modifiers = modifiers;
-    }
-
-    public List<DamageModifier> getTempModifiers() {
-        return tempModifiers;
-    }
-
-    public void setTempModifiers(List<DamageModifier> tempModifiers) {
-        this.tempModifiers = tempModifiers;
-    }
 
     public void addModifier(DamageModifier modifier) {
         if (this.modifiers == null) {

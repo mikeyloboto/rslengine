@@ -5,43 +5,14 @@ import com.evilbas.rslengine.ability.property.SpellType;
 import com.evilbas.rslengine.ability.property.Target;
 import com.evilbas.rslengine.item.property.ItemRarity;
 
+import lombok.Data;
+
+@Data
 public class ConsumableItem extends Item {
     private Target target;
     private Effect effect;
     private SpellType type;
     private Long value;
-
-    public Long getValue() {
-        return value;
-    }
-
-    public void setValue(Long value) {
-        this.value = value;
-    }
-
-    public Target getTarget() {
-        return target;
-    }
-
-    public void setTarget(Target target) {
-        this.target = target;
-    }
-
-    public Effect getEffect() {
-        return effect;
-    }
-
-    public void setEffect(Effect effect) {
-        this.effect = effect;
-    }
-
-    public SpellType getType() {
-        return type;
-    }
-
-    public void setType(SpellType type) {
-        this.type = type;
-    }
 
     public static Item generateHealingItem() {
         ConsumableItem item = new ConsumableItem();

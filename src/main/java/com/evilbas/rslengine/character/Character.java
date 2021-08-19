@@ -10,6 +10,9 @@ import com.evilbas.rslengine.item.ItemArmor;
 import com.evilbas.rslengine.item.ItemWeapon;
 import com.evilbas.rslengine.util.CombatUtil;
 
+import lombok.Data;
+
+@Data
 public class Character extends Creature {
     private String characterGuid;
     private String characterName;
@@ -33,58 +36,6 @@ public class Character extends Creature {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public String getCharacterGuid() {
-        return characterGuid;
-    }
-
-    public void setCharacterGuid(String characterGuid) {
-        this.characterGuid = characterGuid;
-    }
-
-    public String getCharacterName() {
-        return this.characterName;
-    }
-
-    public void setCharacterName(String characterName) {
-        this.characterName = characterName;
-    }
-
-    public Integer getCharacterLevel() {
-        return characterLevel;
-    }
-
-    public void setCharacterLevel(Integer characterLevel) {
-        this.characterLevel = characterLevel;
-    }
-
-    public Long getCharacterExp() {
-        return characterExp;
-    }
-
-    public void setCharacterExp(Long characterExp) {
-        this.characterExp = characterExp;
-    }
-
-    public Spellbook getSpellbook() {
-        return spellbook;
-    }
-
-    public void setSpellbook(Spellbook spellbook) {
-        this.spellbook = spellbook;
-    }
-
     public Character(String characterName) {
         this.characterName = characterName;
         this.characterGuid = UUID.randomUUID().toString();
@@ -94,54 +45,6 @@ public class Character extends Creature {
         this.characterLevel = 1;
         this.recalculateHp();
         this.recalculateMp();
-    }
-
-    public Encounter getCurrentEncounter() {
-        return currentEncounter;
-    }
-
-    public void setCurrentEncounter(Encounter currentEncounter) {
-        this.currentEncounter = currentEncounter;
-    }
-
-    public Integer getSkillPoints() {
-        return skillPoints;
-    }
-
-    public void setSkillPoints(Integer skillPoints) {
-        this.skillPoints = skillPoints;
-    }
-
-    public ItemWeapon getEquippedWeapon() {
-        return equippedWeapon;
-    }
-
-    public void setEquippedWeapon(ItemWeapon equippedWeapon) {
-        this.equippedWeapon = equippedWeapon;
-    }
-
-    public ItemArmor getEquippedArmor() {
-        return equippedArmor;
-    }
-
-    public void setEquippedArmor(ItemArmor equippedArmor) {
-        this.equippedArmor = equippedArmor;
-    }
-
-    public Long getMp() {
-        return mp;
-    }
-
-    public void setMp(Long mp) {
-        this.mp = mp;
-    }
-
-    public Long getMaxMp() {
-        return maxMp;
-    }
-
-    public void setMaxMp(Long maxMp) {
-        this.maxMp = maxMp;
     }
 
     public void addExperience(Long exp) {
